@@ -1,0 +1,56 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.editor {
+    display: flex;
+    width: 80%;
+}
+
+.video-player {
+    flex: 1;
+    margin-right: 20px;
+    border: 1px solid black; /* Debugging border */
+    background-color: #f0f0f0; /* Ensure visibility */
+}
+
+
+.chatbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+
+input[type="file"] {
+    margin-top: 20px;
+}
