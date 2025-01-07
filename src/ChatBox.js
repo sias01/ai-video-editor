@@ -19,7 +19,7 @@ function ChatBox({ onCommandSubmit }) {
             <textarea
                 value={command}
                 onChange={handleCommandChange}
-                placeholder="Enter FFmpeg command..."
+                placeholder="Enter command..."
                 rows="4"
                 cols="50"
                 style={{ resize: "none" }} // Optional: Prevent resizing of the textarea
