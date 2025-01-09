@@ -8,7 +8,10 @@ def ollama_func(user_query, input_path, output_path):
             {"role": "user", "content": user_query}
         ])
     print("Ollama response: ",response['message']['content'])
-    full_response = response['message']['content'].replace("input.mp4", '"' + input_path.replace("\\", "/") + '"').replace("output.mp4", '"' + output_path.replace("\\", "/") + '"')
+    if '"' in response['message']['content']:
+        full_response = response['message']['content']
+    else:
+        full_response = response['message']['content'].replace("input.mp4", '"' + input_path.replace("\\", "/") + '"').replace("output.mp4", '"' + output_path.replace("\\", "/") + '"')
     print("FFmpeg replaced command: ", full_response)
     return full_response
 
