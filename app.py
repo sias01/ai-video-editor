@@ -5,6 +5,8 @@ from ffmpeg_handler import process_video
 import os
 from fastapi.staticfiles import StaticFiles
 
+chat_data = []
+
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="processed"), name="static")
@@ -32,6 +34,7 @@ async def upload_video(file: UploadFile):
 @app.post("/process/")
 async def process_command(file_path: str = Form(...), command: str = Form(...)):
     print("/process request recieved")
+    chat_data.append({"role":"user", "content":command})
     output_path = process_video(file_path, command)
     return {"output_path": output_path}
 
@@ -39,3 +42,9 @@ async def process_command(file_path: str = Form(...), command: str = Form(...)):
 async def preview_video(output_path: str):
     print("/preview request recieved")
     return FileResponse(output_path, media_type="video/mp4")
+
+@app.get("/getChat/")
+async def preview_video():
+    print("/getChat request recieved")
+    print("Chat data: ", chat_data)
+    return chat_data
