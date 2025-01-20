@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import VideoPlayer from "./VideoPlayer";
 import ChatBox from "./ChatBox";
+import { FileUploader } from "react-drag-drop-files";
 import "./style.css";
+
+const fileTypes = ["MP4", "MOV", "AVI"]; // Define the allowed file types
 
 function App() {
     const [videoPath, setVideoPath] = useState("");
     const [previewPath, setPreviewPath] = useState("");
-    // const [outputMessage, setOutputMessage] = useState(""); // State for feedback messages
+    const [outputMessage, setOutputMessage] = useState(""); // State for feedback messages
     const [conversation, setConversation] = useState([]); // Initial conversation
     const [isModalVisible, setIsModalVisible] = useState(false); // State for modal visibility
+
+    useEffect(() => {
+        if (outputMessage) {
+            const timer = setTimeout(() => {
+                setOutputMessage("");
+                setIsModalVisible(false);
+            }, 5000); // Hide the popup after 5 seconds
+
+            return () => clearTimeout(timer); // Clear the timeout if the component unmounts
+        }
+    }, [outputMessage]);
 
     const handleFileUpload = async (file) => {
         const formData = new FormData();
@@ -40,14 +54,14 @@ function App() {
             }
         } catch (error) {
             console.error("File upload error:", error);
-            // setOutputMessage("Failed to upload the video. Please try again.");
+            setOutputMessage("Failed to upload the video. Please try again.");
             setIsModalVisible(true); // Show modal on error
         }
     };
 
     const handleCommandSubmit = async (command) => {
         if (!videoPath) {
-            // setOutputMessage("Error: Please upload a video before issuing commands.");
+            setOutputMessage("Error: Please upload a video before issuing commands.");
             setIsModalVisible(true); // Show modal on error
             return;
         }
@@ -76,7 +90,7 @@ function App() {
                 const videoBlob = await previewResponse.blob();
                 const videoUrl = URL.createObjectURL(videoBlob);
                 setPreviewPath(videoUrl);
-                // setOutputMessage(`Command "${command}" executed successfully!`);
+                setOutputMessage(`Command "${command}" executed successfully!`);
             } else {
                 throw new Error("Error fetching the processed video preview.");
             }
@@ -91,7 +105,7 @@ function App() {
             setConversation(chatData);
         } catch (error) {
             console.error("Command processing error:", error);
-            // setOutputMessage("Failed to process the video command. Please try again.");
+            setOutputMessage("Failed to process the video command. Please try again.");
             setIsModalVisible(true); // Show modal on error
         }
     };
@@ -100,22 +114,19 @@ function App() {
         setIsModalVisible(false);
     };
 
+    const handleFileChange = (file) => {
+        handleFileUpload(file);
+    };
+
     return (
         <div className="app">
             <div className="editor">
                 <div className="video-section">
-                    <VideoPlayer src={previewPath} />
-                    {/* File Upload */}
-                    <input
-                        type="file"
-                        accept="video/*"
-                        onChange={(e) => handleFileUpload(e.target.files[0])}
-                        className="file-input"
-                        id="file-input"
-                    />
-                    <label htmlFor="file-input" className="file-upload-button">
-                        <i className="upload-icon"></i>
-                    </label>
+                    {previewPath ? (
+                        <VideoPlayer src={previewPath} />
+                    ) : (
+                        <FileUploader handleChange={handleFileChange} name="file" types={fileTypes} />
+                    )}
                 </div>
                 <div className="separator"></div>
                 <div className="chat-section">
@@ -127,15 +138,12 @@ function App() {
                 </div>
             </div>
             
-            {/* Output Message */}
-            {/* {outputMessage && <p style={{ color: "red", marginTop: "10px" }}>{outputMessage}</p>} */}
-
             {/* Modal */}
             {isModalVisible && (
                 <div className="modal">
                     <div className="modal-content">
                         <span className="close" onClick={closeModal}>&times;</span>
-                        {/* <p>{outputMessage}</p> */}
+                        <p>{outputMessage}</p>
                     </div>
                 </div>
             )}

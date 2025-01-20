@@ -126,13 +126,14 @@ input[type="file"] {
 }
 
 .modal-content {
-    background-color: white;
+    background-color: #4CAF50;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
     max-width: 500px;
     border-radius: 10px;
     text-align: center;
+    color: black; /* Change font color to black */
 }
 
 .close {
