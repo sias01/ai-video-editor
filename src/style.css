@@ -18,26 +18,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Align items at the top by default */
     position: relative;
-    transform: translateY(-25%);
 }
 
 .video-section {
     padding: 20px;
 }
 
-/* .chat-section {
-    padding: 20px;
-} */
-
-/* .video-section {
-    padding: 20px;
-} */
-
 .chat-section {
     padding: 20px;
-    transform: translateY(-25%); /* Move the chatbox up by 25% of its height */
 }
 
 .separator {
@@ -74,7 +64,7 @@ body {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #ffffff;
+    background-color: #28a745;
     color: white;
     border: none;
     border-radius: 5px;
@@ -82,18 +72,16 @@ body {
 }
 
 .file-upload-button:hover {
-    background-color: #9ad59d;
+    background-color: #218838;
 }
-/* <a href="https://www.flaticon.com/free-icons/upload-button" title="upload button icons">Upload button icons created by Anggara - Flaticon</a> */
+
 .upload-icon {
-    /* margin-right: 10px; */
     background: url('upload.png') no-repeat center center;
     background-size: contain;
     width: 15px;
     height: 20px;
 }
 
-/* Additional styles for buttons and inputs */
 textarea {
     margin-bottom: 10px;
     padding: 10px;
@@ -159,4 +147,127 @@ input[type="file"] {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Chat Section Fix */
+.chat-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures the input stays at the bottom */
+    height: 100%; /* Full height for the section */
+}
+
+.conversation {
+    flex: 1; /* Takes available space above the input box */
+    overflow-y: auto; /* Scrollable conversation area */
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.input-container {
+    display: flex;
+    padding: 10px;
+    background-color: #444; /* Slightly lighter grey for contrast */
+    border-top: 1px solid #ccc;
+    width: 100%;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #555;
+    color: white;
+}
+
+button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #333; /* Dark grey background */
+    color: white; /* White text color for contrast */
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.app-container {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+    width: 100%;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.chat-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures input stays at the bottom */
+    height: 100%; /* Full height for the section */
+    overflow: hidden; /* Prevent extra scrollbars */
+    padding: 20px;
+}
+
+.conversation {
+    flex: 1; /* Takes available space above the input box */
+    overflow-y: auto; /* Scrollable conversation area */
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box; /* Includes padding in dimensions */
+}
+
+.chat-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0; /* Ensure padding doesn’t conflict */
+    margin: 0; /* Remove unnecessary spacing */
+    overflow: hidden; /* Prevent unintended scrolling */
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background: 000000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555;
+}
+
+.dropzone {
+border: 2px dashed #ccc;
+border-radius: 5px;
+padding: 20px;
+text-align: center;
+cursor: pointer;
+margin-bottom: 20px;
+}
+
+.dropzone.active {
+    border-color: #0066cc;
+    background-color: #f0f8ff;
 }

@@ -19,6 +19,9 @@ function ChatBox({ conversation, onCommandSubmit, setConversation }) {
 
     return (
         <div className="chatbox">
+            <div class="chatbox-title">
+                SmartClip
+            </div>
             <div className="conversation">
                 {conversation
                     .filter((message) => message.role !== "system")
