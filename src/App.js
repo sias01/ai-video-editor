@@ -10,6 +10,7 @@ function App() {
     const [videoPath, setVideoPath] = useState("");
     const [previewPath, setPreviewPath] = useState("");
     const [outputMessage, setOutputMessage] = useState(""); // State for feedback messages
+    const [statusMessage, setStatusMessage] = useState(""); // State for status messages
     const [conversation, setConversation] = useState([]); // Initial conversation
     const [isModalVisible, setIsModalVisible] = useState(false); // State for modal visibility
 
@@ -24,7 +25,18 @@ function App() {
         }
     }, [outputMessage]);
 
+    useEffect(() => {
+        if (statusMessage) {
+            const timer = setTimeout(() => {
+                setStatusMessage("");
+            }, 3000); // Hide the status message after 3 seconds
+
+            return () => clearTimeout(timer); // Clear the timeout if the component unmounts
+        }
+    }, [statusMessage]);
+
     const handleFileUpload = async (file) => {
+        setStatusMessage("Uploading...");
         const formData = new FormData();
         formData.append("file", file);
     
@@ -42,6 +54,7 @@ function App() {
             const data = await response.json();
             console.log("Uploaded file data:", data); // Debugging log
             setVideoPath(data.file_path);
+            setStatusMessage("Uploaded!");
     
             // Fetch preview of the uploaded video
             const previewResponse = await fetch(`http://localhost:8000/preview/?output_path=${encodeURIComponent(data.file_path)}`);
@@ -66,6 +79,7 @@ function App() {
             return;
         }
 
+        setStatusMessage("Processing...");
         const formData = new FormData();
         formData.append("file_path", videoPath);
         formData.append("command", command);
@@ -83,6 +97,7 @@ function App() {
 
             const data = await response.json();
             console.log("Processed file data:", data); // Debugging log
+            setStatusMessage("Processed!");
     
             // Fetch preview of the processed video
             const previewResponse = await fetch(`http://localhost:8000/preview/?output_path=${encodeURIComponent(data.output_path)}`);
@@ -127,6 +142,7 @@ function App() {
                     ) : (
                         <FileUploader handleChange={handleFileChange} name="file" types={fileTypes} />
                     )}
+                    {statusMessage && <p className="status-message">{statusMessage}</p>}
                 </div>
                 <div className="separator"></div>
                 <div className="chat-section">

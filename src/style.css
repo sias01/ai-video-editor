@@ -273,3 +273,9 @@ margin-bottom: 20px;
     border-color: #0066cc;
     background-color: #f0f8ff;
 }
+
+.status-message {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #4CAF50; /* Green color for status messages */
+}
