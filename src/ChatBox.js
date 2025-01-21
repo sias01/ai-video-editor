@@ -17,9 +17,16 @@ function ChatBox({ conversation, onCommandSubmit, setConversation }) {
         }
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") { // Check if the pressed key is "Enter"
+            handleSubmit();
+        }
+    };
+
     return (
         <div className="chatbox">
-            <div class="chatbox-title">
+            <div className="chatbox-title">
+                <img src="SC-logo.jpg" alt="Logo" className="chatbox-logo" /> {/* Add the logo here */}
                 SmartClip
             </div>
             <div className="conversation">
@@ -39,6 +46,7 @@ function ChatBox({ conversation, onCommandSubmit, setConversation }) {
                     type="text"
                     value={command}
                     onChange={handleCommandChange}
+                    onKeyDown={handleKeyDown} // Listen for the Enter key press
                     placeholder="Type a message..."
                 />
                 <button onClick={handleSubmit}>Send</button>

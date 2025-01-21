@@ -7,19 +7,44 @@
     background-color: #333; /* Chatbox background color */
 }
 
-/* Title section */
+/* Logo styling */
+.chatbox-logo {
+    height: 30px; /* Adjust the height of the logo */
+    margin-right: 10px; /* Add spacing between the logo and text */
+    vertical-align: middle; /* Align logo with text */
+    border-radius: 50%; /* Optional: make the logo circular */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Optional: add shadow for better appearance */
+}
+
+/* Title section update */
 .chatbox-title {
     position: sticky; /* Sticks to the top */
     top: 0;
-    background-color: #28a745; /* Title background color */
+    background: linear-gradient(90deg, #28a745, #218838); /* Gradient background */
     padding: 15px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
-    color: white; /* Title text color */
-    z-index: 10; /* Ensure title stays on top */
+    color: white;
+    z-index: 10;
     border-bottom: 1px solid #ccc;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 10px 10px;
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 1px;
+    display: flex; /* Flexbox for aligning logo and text */
+    align-items: center; /* Vertically center logo and text */
+    justify-content: center; /* Horizontally center logo and text */
 }
+
+/* Optional hover effect for interactivity */
+.chatbox-title:hover {
+    background: linear-gradient(90deg, #218838, #28a745); /* Reverse gradient */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
 
 /* Conversation area */
 .conversation {

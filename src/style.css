@@ -31,10 +31,11 @@ body {
 }
 
 .separator {
-    width: 1px; /* Thin vertical line */
+    width: 2px; /* Thin vertical line */
     background-color: #000000; /* Black color */
     height: 100%; /* Full height */
     align-self: stretch; /* Ensure the separator takes the full height */
+    /* margin-left: 300px; */
 }
 
 .app {
