@@ -1,281 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #333; /* Dark grey background */
-    color: white; /* White text color for contrast */
-}
-
-.app-container {
-    display: flex;
-    height: 100vh; /* Full viewport height */
-    width: 100%;
-    overflow: hidden; /* Prevent scrolling */
-}
-
-.video-section,
-.chat-section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* Align items at the top by default */
-    position: relative;
-}
-
-.video-section {
-    padding: 20px;
-}
-
-.chat-section {
-    padding: 20px;
-}
-
-.separator {
-    width: 2px; /* Thin vertical line */
-    background-color: #000000; /* Black color */
-    height: 100%; /* Full height */
-    align-self: stretch; /* Ensure the separator takes the full height */
-    /* margin-left: 300px; */
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: rgb(9, 9, 11);
+  color: white;
 }
 
 .app {
-    display: flex;
-    height: 100vh;
-    width: 100%;
+  min-height: 100vh;
+  display: flex;
 }
 
 .editor {
-    display: flex;
-    flex: 1;
-    align-items: center; /* Center items vertically */
+  display: flex;
+  flex: 1;
+  gap: 2rem;
+  padding: 1.5rem;
 }
 
+.video-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chat-section {
+  width: 400px;
+  background-color: rgb(9, 9, 11);
+  border-left: 1px solid rgb(39, 39, 42);
+}
+
+.video-player video {
+  width: 100%;
+  border-radius: 0.5rem;
+  background-color: rgb(24, 24, 27);
+}
+
+/* File Uploader Styles */
 .file-upload-container {
-    margin-top: 20px;
-    position: relative;
+  border: 2px dashed rgb(34, 197, 94);
+  border-radius: 0.5rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: rgba(34, 197, 94, 0.1);
+  transition: all 0.2s ease;
 }
 
-.file-input {
-    display: none; /* Hide the default file input */
-}
-
-.file-upload-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.file-upload-button:hover {
-    background-color: #218838;
-}
-
-.upload-icon {
-    background: url('upload.png') no-repeat center center;
-    background-size: contain;
-    width: 15px;
-    height: 20px;
-}
-
-textarea {
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 16px;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-input[type="file"] {
-    margin-top: 20px;
-}
-
-.modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
-}
-
-.modal-content {
-    background-color: #4CAF50;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 10px;
-    text-align: center;
-    color: black; /* Change font color to black */
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Chat Section Fix */
-.chat-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Ensures the input stays at the bottom */
-    height: 100%; /* Full height for the section */
-}
-
-.conversation {
-    flex: 1; /* Takes available space above the input box */
-    overflow-y: auto; /* Scrollable conversation area */
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-.input-container {
-    display: flex;
-    padding: 10px;
-    background-color: #444; /* Slightly lighter grey for contrast */
-    border-top: 1px solid #ccc;
-    width: 100%;
-}
-
-input[type="text"] {
-    flex: 1;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #555;
-    color: white;
-}
-
-button {
-    margin-left: 10px;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #333; /* Dark grey background */
-    color: white; /* White text color for contrast */
-    height: 100vh; /* Full viewport height */
-    overflow: hidden; /* Prevent scrolling */
-}
-
-.app-container {
-    display: flex;
-    height: 100vh; /* Full viewport height */
-    width: 100%;
-    overflow: hidden; /* Prevent scrolling */
-}
-
-.chat-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Ensures input stays at the bottom */
-    height: 100%; /* Full height for the section */
-    overflow: hidden; /* Prevent extra scrollbars */
-    padding: 20px;
-}
-
-.conversation {
-    flex: 1; /* Takes available space above the input box */
-    overflow-y: auto; /* Scrollable conversation area */
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box; /* Includes padding in dimensions */
-}
-
-.chat-section {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 0; /* Ensure padding doesn’t conflict */
-    margin: 0; /* Remove unnecessary spacing */
-    overflow: hidden; /* Prevent unintended scrolling */
-}
-
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-background: 000000;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-background: #555;
-}
-
-.dropzone {
-border: 2px dashed #ccc;
-border-radius: 5px;
-padding: 20px;
-text-align: center;
-cursor: pointer;
-margin-bottom: 20px;
-}
-
-.dropzone.active {
-    border-color: #0066cc;
-    background-color: #f0f8ff;
+.file-upload-container:hover {
+  background-color: rgba(34, 197, 94, 0.15);
+  border-color: rgb(22, 163, 74);
 }
 
 .status-message {
-    margin-top: 10px;
-    font-size: 16px;
-    color: #4CAF50; /* Green color for status messages */
+  color: rgb(34, 197, 94);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: rgb(24, 24, 27);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  color: white;
+}
+
+.close {
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: rgb(161, 161, 170);
 }
