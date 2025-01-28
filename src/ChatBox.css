@@ -45,7 +45,6 @@
     transition: background-color 0.3s ease;
 }
 
-
 /* Conversation area */
 .conversation {
     flex: 1; /* Takes available space between title and input */
@@ -129,4 +128,30 @@ button:hover {
 
 .conversation::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+.suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the suggestion buttons */
+    margin: 0 0; /* Add margin to separate from the line above */
+    padding: 10px; /* Add padding for better spacing */
+    background-color: #333; /* Match the chatbox background color */
+}
+
+.suggestion-button {
+    flex: 0 0 48%; /* Each button takes up 48% of the width to fit two in a row with some space between */
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin: 5px; /* Add some space between buttons */
+}
+
+.suggestion-button:hover {
+    background-color: #45a049;
 }
