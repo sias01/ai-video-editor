@@ -14,9 +14,6 @@ def ollama_func(user_query, input_path, output_path):
     else:
         full_response = response['message']['content'].replace("input.mp4", '"' + input_path.replace("\\", "/") + '"').replace("output.mp4", '"' + output_path.replace("\\", "/") + '"').replace("`","")
     print("FFmpeg replaced command: ", full_response)
-    # full_response = """
-    # ffmpeg -i "uploads/how to record screen and audio in windows 10 - Google Search - Google Chrome 2021-11-11 18-11-13.mp4" -ss 0:5 -t 2 "processed/processed_how to record screen and audio in windows 10 - Google Search - Google Chrome 2021-11-11 18-11-13.mp4"
-    # """
     return full_response
 
 OUTPUT_DIR = "processed"
