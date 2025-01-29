@@ -49,6 +49,7 @@ body {
   cursor: pointer;
   background-color: rgba(34, 197, 94, 0.1);
   transition: all 0.2s ease;
+  margin-top: 12.5rem; /* Add this line to move it down */
 }
 
 .file-upload-container:hover {
