@@ -1,4 +1,4 @@
-# SmartClip
+# SmartClip: Chat with your video
 
 ## Overview
 **SmartClip** is a tool that combines artificial intelligence and video processing to simplify video editing tasks. Using the interface, users can import videos, communicate their editing requirements through a chatbox, and watch live previews of their edits in real-time. The application uses AI capabilities to generate and execute FFmpeg commands, to ensure seamless and efficient video editing.
