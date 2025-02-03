@@ -5,6 +5,11 @@
 
 ---
 
+## Demo Video
+[![Watch the demo](https://img.youtube.com/vi/y9yRWo7ac3w/0.jpg)](https://www.youtube.com/watch?v=y9yRWo7ac3w)
+
+---
+
 ## Features
 - **User-Friendly Interface**: Import videos and interact with a split-screen layout—video on the left, chatbox on the right.
 - **AI-Powered Editing**: The chatbox, powered by **Ollama**, interprets user commands and generates FFmpeg scripts for video alterations.
