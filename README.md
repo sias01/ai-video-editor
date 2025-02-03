@@ -133,6 +133,6 @@ AI-VIDEO-EDITOR/
 ## Contact
 For questions, feedback, or suggestions:
 - **Author**: [Shreyas Desai](https://github.com/sias01)
-- **Email**: shreyasdesai31012002@gmail.com
+- **Email**: ssdesai306@gmail.com
 
 Feel free to open issues or contribute to make this project better!
